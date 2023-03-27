@@ -9,15 +9,19 @@ import Foundation
 import SwiftUI
 
 struct DetailView: View {
+    var picture:String
     var name:String
+    var description:String
     
     var body: some View {
-        Text(name)
+        Text(name).font(.system(size: 36))
+    Text(picture)
+    Text(description)
     }
 }
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView(name:"Hi")
+        DetailView(picture:"Hi", name:"Hi", description:"A")
     }
 }
