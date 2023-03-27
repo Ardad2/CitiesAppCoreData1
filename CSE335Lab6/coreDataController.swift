@@ -9,20 +9,12 @@ import Foundation
 import CoreData
 class coreDataController : ObservableObject
 {
-    @Published var LanData:[Language] = [Language]()
-    @Published var OSData:[OS] = [OS]()
-    @Published var MoData:[Mobile] = [Mobile]()
+    @Published var cityData:[City] = [City()]
     
-    // Handler to persistent object container
     let persistentContainer:NSPersistentContainer
-    
-    /* constructor initializes the persistentContainer and load data to the three lists
+
        
-     LanData : Programming Language Objects in Language Entity
-     OSData  : Operating System objects in OS Entity
-     MoData  : Mobile System objescts in the Mobile Entity
-       
-     */
+     
     init()
     {
         //
@@ -34,140 +26,45 @@ class coreDataController : ObservableObject
             
         }
         
-        LanData = getLanguages()
-        OSData = getOS()
-        MoData = getMobile()
+        cityData = getCities()
         
     }
     
-    // Add new entries into the Language Entity
-    func saveLanguage(lanNam: String)
+    func saveCity(cityNam: String)
     {
-        let lan = Language(context: persistentContainer.viewContext)
-        lan.name = lanNam
-        lan.id = UUID()
+        let city = City(context: persistentContainer.viewContext)
+        city.name = cityNam
+        city.id = UUID()
         do {
-            //print("saving")
             try persistentContainer.viewContext.save()
-            LanData = getLanguages()
+            cityData = getCities()
         } catch{
             print("failed to save \(error)")
         }
     }
     
-    // Delete entries from the Language Entity
-    func deleteLanguage(lan: Language)
+    func deleteCity(city: City)
     {
-        persistentContainer.viewContext.delete(lan)
+        persistentContainer.viewContext.delete(city)
         do {
-            //print("saving")
             try persistentContainer.viewContext.save()
-            //LanData = getLanguages()
         } catch{
             print("failed to save \(error)")
         }
         
     }
-    // Fetch entries from the Language Entity
-    func getLanguages() -> [Language]
+    func getCities() -> [City]
     {
-        let fetchRequest: NSFetchRequest<Language> = Language.fetchRequest()
+        let fetchRequest: NSFetchRequest<City> = City.fetchRequest()
         do {
             let x = try persistentContainer.viewContext.fetch(fetchRequest)
-            /*print(x.count)
-            print(x[0].name)*/
+
             return x
         }catch{
             return []
         }
     }
     
-    
-    // Insert entries into the OS Entity
-    func saveOS(lanNam: String)
-    {
-        let os = OS(context: persistentContainer.viewContext)
-        os.name = lanNam
-        os.id = UUID()
-        do {
-            //print("saving")
-            try persistentContainer.viewContext.save()
-            OSData = getOS()
-        } catch{
-            print("failed to save \(error)")
-        }
-    }
-    
-    // Fetch entries from the OS Entity
-    func getOS() -> [OS]
-    {
-        let fetchRequest: NSFetchRequest<OS> = OS.fetchRequest()
-        do {
-            let x = try persistentContainer.viewContext.fetch(fetchRequest)
-            /*print(x.count)
-            print(x[0].name)*/
-            return x
-        }catch{
-            return []
-        }
-    }
-    
-    // Delete entries from the OS Entity
-    func deleteOs(operatingS: OS)
-    {
-        persistentContainer.viewContext.delete(operatingS)
-        do {
-            //print("saving")
-            try persistentContainer.viewContext.save()
-            //LanData = getLanguages()
-        } catch{
-            print("failed to save \(error)")
-        }
-        
-    }
-    
-    // Insert entries into the Mobile Entity
-    func saveMobile(lanNam: String)
-    {
-        let mo = Mobile(context: persistentContainer.viewContext)
-        mo.name = lanNam
-        mo.id = UUID()
-        do {
-            print("saving")
-            try persistentContainer.viewContext.save()
-            MoData = getMobile()
-        } catch{
-            print("failed to save \(error)")
-        }
-    }
-    
-    // Fetch entries from the Mobile Entity
-    func getMobile() -> [Mobile]
-    {
-        let fetchRequest: NSFetchRequest<Mobile> = Mobile.fetchRequest()
-        do {
-            let x = try persistentContainer.viewContext.fetch(fetchRequest)
-            /*print(x.count)
-            print(x[0].name)*/
-            return x
-        }catch{
-            return []
-        }
-    }
-    
-    // Delete entries from the Mobile Entity
-    func deleteMo(mobile: Mobile)
-    {
-        persistentContainer.viewContext.delete(mobile)
-        do {
-            print("saving")
-            try persistentContainer.viewContext.save()
-           
-        } catch{
-            print("failed to save \(error)")
-        }
-        
-    }
     
 }
     

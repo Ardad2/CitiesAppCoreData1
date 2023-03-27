@@ -15,30 +15,19 @@ struct section:Identifiable
 
 struct ContentView: View {
     
-    //module that manage the coreData
     @State var dataController: coreDataController = coreDataController()
 
-    // tableview sections
-    @State  var sectionData = [
-        section(name:"Programming Languages"),
-        section(name:"Operating Systems"),
-        section(name:"Mobile Platforms")]
-
-    // boolean variable that enable show/hide data insert view
     @State var toInsertView = false
     
-    /*variables to read data and the type (0: programming languages, 1: Operating systems, 2: Mobile platforms) to insert */
     @State  var data = ""
     @State  var type = ""
-    //
-   // @State var sectionType = ["Programming Languages", "Operating Systems", "Mobile Platforms"]
     
     var body: some View {
         NavigationView
         {
     
-            List {
-                    ForEach(dataController.LanData) { datum in
+            List{
+                    ForEach(dataController.cityData) { datum in
                         if datum.name != nil
                         {
                             NavigationLink(destination:
@@ -52,9 +41,8 @@ struct ContentView: View {
                         }
                     }.onDelete(perform: {IndexSet in
                         for index in IndexSet {
-                            // call delete language method in coreData manager Module
-                            let language = dataController.LanData[index]
-                            dataController.deleteLanguage(lan: language)
+                            let city = dataController.cityData[index]
+                            dataController.deleteCity(city: city)
                             }
                   
                         })
@@ -77,7 +65,7 @@ struct ContentView: View {
                     TextField("Enter City Name:", text: $data)
 
                     Button("Insert", action: {
-                            dataController.saveLanguage(lanNam: data)
+                            dataController.saveCity(cityNam: data)
                             toInsertView = false
                           
                     
