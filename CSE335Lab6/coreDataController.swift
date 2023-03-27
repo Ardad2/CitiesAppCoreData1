@@ -30,10 +30,12 @@ class coreDataController : ObservableObject
         
     }
     
-    func saveCity(cityNam: String)
+    func saveCity(cityName: String, cityPicture: String, cityDescription: String)
     {
         let city = City(context: persistentContainer.viewContext)
-        city.name = cityNam
+        city.name = cityName
+        city.picture = cityPicture
+        city.desc = cityDescription
         city.id = UUID()
         do {
             try persistentContainer.viewContext.save()

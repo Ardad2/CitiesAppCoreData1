@@ -20,7 +20,10 @@ struct ContentView: View {
     @State var toInsertView = false
     
     @State  var data = ""
-    @State  var type = ""
+    
+    @State var enterName = ""
+    @State var enterPicture = ""
+    @State var enterDescription = ""
     
     var body: some View {
         NavigationView
@@ -62,10 +65,13 @@ struct ContentView: View {
                     }
                 }.alert("Insert", isPresented: $toInsertView, actions: {
                    
-                    TextField("Enter City Name:", text: $data)
+                    TextField("Name:", text: $enterName)
+                    TextField("Description:", text: $enterDescription)
+                    TextField("Picture:", text: $enterPicture)
+                    
 
                     Button("Insert", action: {
-                            dataController.saveCity(cityNam: data)
+                        dataController.saveCity(cityName: enterName, cityPicture: enterPicture, cityDescription: enterDescription)
                             toInsertView = false
                           
                     
