@@ -38,8 +38,6 @@ struct ContentView: View {
         {
     
             List {
-                Section(sectionData[0].name)
-                {
                     ForEach(dataController.LanData) { datum in
                         if datum.name != nil
                         {
@@ -61,50 +59,9 @@ struct ContentView: View {
                   
                         })
                     
-                }
-                Section(sectionData[1].name)
-                {
-                    ForEach(dataController.getOS()) { datum in
-                        if datum.name != nil
-                        {
-                            NavigationLink(destination: DetailView(name: datum.name!))
-                            {
-                                Text(datum.name!)
-                            }
-                        }
-                    }.onDelete(perform: {IndexSet in
-                        for index in IndexSet {
-                            // call delete OS method in coreData manager Module
-                            let os = dataController.OSData[index]
-                            dataController.deleteOs(operatingS: os)
-                            }
-                    })
-                    
-                }
-                Section(sectionData[2].name)
-                {
-                   
-                        ForEach(dataController.getMobile()) { datum in
-                        if datum.name != nil
-                        {
-                            NavigationLink(destination: DetailView(name: datum.name!))
-                            {
-                                Text(datum.name!)
-                            }
-                      }
-                    }.onDelete(perform: {IndexSet in
-                        
-                        for index in IndexSet {
-                        // call delete Mobile method in coreData manager Module
-                        let mo = dataController.MoData[index]
-                        dataController.deleteMo(mobile: mo)
-                        }
-                        
-                    })
-                    
-                }
+
             }.navigationBarTitleDisplayMode(.inline)
-                .navigationTitle("List Introduction")
+                .navigationTitle("Cities Visited")
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button {
@@ -117,34 +74,20 @@ struct ContentView: View {
                     }
                 }.alert("Insert", isPresented: $toInsertView, actions: {
                    
-                    TextField("Data:", text: $data)
-                    TextField("Data Type (0, 1, or 2):", text: $type)
+                    TextField("Enter City Name:", text: $data)
 
                     Button("Insert", action: {
-                        if Int(type) == 0{
                             dataController.saveLanguage(lanNam: data)
                             toInsertView = false
                           
-                        }else if Int(type) == 1
-                        {
-                            dataController.saveOS(lanNam: data)
-                            toInsertView = false
-                        }else if Int(type) == 2
-                        {
-                            dataController.saveMobile(lanNam: data)
-                            toInsertView = false
-                        }else
-                        {
-                          print("Invald Type")
-                          toInsertView = false
-                        }
+                    
                         
                     })
                     Button("Cancel", role: .cancel, action: {
                         toInsertView = false
                     })
                 }, message: {
-                    Text("Please Enter Data Programming Language, OS, or Mobile Platform to Insert")
+                    Text("Enter the details of the city you want to add.")
                 })
         }
         
