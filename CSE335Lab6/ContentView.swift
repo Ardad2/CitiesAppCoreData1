@@ -34,7 +34,7 @@ struct ContentView: View {
                         if datum.name != nil
                         {
                             NavigationLink(destination:
-                                            DetailView(name: datum.name ?? ""))
+                                            DetailView(picture: datum.picture ?? "", name: datum.name ?? "", description: datum.desc ?? ""))
                             {
                                 if datum.name != nil
                                 {
