@@ -30,7 +30,7 @@ class coreDataController : ObservableObject
         
     }
     
-    func saveCity(cityName: String, cityPicture: String, cityDescription: String)
+    func saveCity(cityName: String, cityPicture: Data, cityDescription: String)
     {
         let city = City(context: persistentContainer.viewContext)
         city.name = cityName

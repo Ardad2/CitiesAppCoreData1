@@ -36,11 +36,11 @@ struct ContentView: View {
                     if datum.name != nil
                     {
                         NavigationLink(destination:
-                                        DetailView(picture: datum.picture ?? "", name: datum.name ?? "", description: datum.desc ?? ""))
+                                        DetailView(picture: "Not avaliable for now", name: datum.name ?? "", description: datum.desc ?? ""))
                         {
                             if datum.name != nil
                             {
-                                Image(uiImage: self.enterImage)
+                                Image(uiImage: UIImage(data:(datum.picture ?? Data())) ?? UIImage())
                                     .resizable()
                                     .scaledToFill()
                                     .frame(minWidth: 0, maxWidth: .infinity)
@@ -87,7 +87,7 @@ struct ContentView: View {
                     
                     
                     Button("Insert", action: {
-                        dataController.saveCity(cityName: enterName, cityPicture: enterPicture, cityDescription: enterDescription)
+                        dataController.saveCity(cityName: enterName, cityPicture: enterImage.pngData() ?? Data(), cityDescription: enterDescription)
                         toInsertView = false
                         
                         
