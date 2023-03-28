@@ -36,7 +36,7 @@ struct ContentView: View {
                     if datum.name != nil
                     {
                         NavigationLink(destination:
-                                        DetailView(picture: "Not avaliable for now", name: datum.name ?? "", description: datum.desc ?? ""))
+                                        DetailView(picture: "TEST", name: datum.name ?? "", description: datum.desc ?? ""))
                         {
                             if datum.name != nil
                             {
@@ -87,10 +87,10 @@ struct ContentView: View {
                     
                     
                     Button("Insert", action: {
-                        dataController.saveCity(cityName: enterName, cityPicture: enterImage.pngData() ?? Data(), cityDescription: enterDescription)
+                        dataController.saveCity(cityName: enterName, cityPicture: (enterImage.pngData() ?? Data()), cityDescription: enterDescription)
                         toInsertView = false
                         
-                        
+                        //enterImage.pngData() ?? Data()
                         
                     })
                     

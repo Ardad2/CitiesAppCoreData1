@@ -16,13 +16,13 @@ struct DetailView: View {
     
     var body: some View {
         Text(name).font(.system(size: 36))
-    Text(picture)
+   // Text(picture)
     Text(description)
     }
 }
 
-struct DetailView_Previews: PreviewProvider {
+/*struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView(picture:"Hi", name:"Hi", description:"A")
-    }
-}
+       // DetailView(picture:"Hi", name:"Hi", description:"A")
+    }*/
+//}
