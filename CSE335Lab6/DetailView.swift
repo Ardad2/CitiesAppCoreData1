@@ -11,7 +11,8 @@ import SwiftUI
 struct DetailView: View {
     var picture:String
     var name:String
-    var description:UIImage
+
+    var description:String
     
     var body: some View {
         Text(name).font(.system(size: 36))
