@@ -25,7 +25,7 @@ struct ContentView: View {
     @State var enterName = ""
     @State var enterPicture = ""
     @State var enterDescription = ""
-    @State var image = UIImage()
+    @State var enterImage = UIImage()
     
     var body: some View {
         NavigationView
@@ -40,7 +40,7 @@ struct ContentView: View {
                         {
                             if datum.name != nil
                             {
-                                Image(uiImage: self.image)
+                                Image(uiImage: self.enterImage)
                                     .resizable()
                                     .scaledToFill()
                                     .frame(minWidth: 0, maxWidth: .infinity)
@@ -70,21 +70,19 @@ struct ContentView: View {
                             Image(systemName: "plus")
                         }
                     }
-                }.alert("Insert", isPresented: $toInsertView, actions: {
+                } .alert("Insert", isPresented: $toInsertView, actions: {
 
                     
                     TextField("Name:", text: $enterName)
                     TextField("Description:", text: $enterDescription)
                     TextField("Picture:", text: $enterPicture)
-                    
-                    
+
                     Button( action: {
                         isShowPhotoLibrary = true
-                        toInsertView = true
                     })
                     {
                         
-                        Label("Add Picture", systemImage: "plus")
+                        Label("Add Photo", systemImage: "plus")
                     }
                     
                     
@@ -95,17 +93,19 @@ struct ContentView: View {
                         
                         
                     })
+                    
                     Button("Cancel", role: .cancel, action: {
                         toInsertView = false
                     })
                 }, message: {
                     Text("Enter the details of the city you want to add.")
-                }).sheet(isPresented: $isShowPhotoLibrary) {
-                    ImagePicker(sourceType: .photoLibrary, selectedImage: self.$image)
+                }) .sheet(isPresented: $isShowPhotoLibrary, onDismiss: {toInsertView = true}) {
+                    ImagePicker(sourceType: .photoLibrary, selectedImage: self.$enterImage)
                 }
             
+            
         }
-    }
+                         }
     
     
     
