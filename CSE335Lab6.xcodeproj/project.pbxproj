@@ -17,6 +17,7 @@
 		8208CEBC29D2521700F8D82A /* tableData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8208CEB829D2521700F8D82A /* tableData.xcdatamodeld */; };
 		8208CEBD29D2521700F8D82A /* coreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8208CEBA29D2521700F8D82A /* coreDataController.swift */; };
 		8208CEC029D2524300F8D82A /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8208CEBF29D2524300F8D82A /* DetailView.swift */; };
+		8208CEFD29D382BF00F8D82A /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8208CEFC29D382BF00F8D82A /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		8208CEB929D2521700F8D82A /* tableData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = tableData.xcdatamodel; sourceTree = "<group>"; };
 		8208CEBA29D2521700F8D82A /* coreDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = coreDataController.swift; sourceTree = "<group>"; };
 		8208CEBF29D2524300F8D82A /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		8208CEFC29D382BF00F8D82A /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 		8208CE8D29D2510000F8D82A /* CSE335Lab6 */ = {
 			isa = PBXGroup;
 			children = (
+				8208CEFC29D382BF00F8D82A /* ImagePicker.swift */,
 				8208CEBF29D2524300F8D82A /* DetailView.swift */,
 				8208CEBA29D2521700F8D82A /* coreDataController.swift */,
 				8208CEB829D2521700F8D82A /* tableData.xcdatamodeld */,
@@ -269,6 +272,7 @@
 				8208CE9129D2510000F8D82A /* ContentView.swift in Sources */,
 				8208CEBC29D2521700F8D82A /* tableData.xcdatamodeld in Sources */,
 				8208CEBD29D2521700F8D82A /* coreDataController.swift in Sources */,
+				8208CEFD29D382BF00F8D82A /* ImagePicker.swift in Sources */,
 				8208CEC029D2524300F8D82A /* DetailView.swift in Sources */,
 				8208CE8F29D2510000F8D82A /* CSE335Lab6App.swift in Sources */,
 			);
