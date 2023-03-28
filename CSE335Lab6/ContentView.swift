@@ -23,7 +23,6 @@ struct ContentView: View {
     @State  var data = ""
     
     @State var enterName = ""
-    @State var enterPicture = ""
     @State var enterDescription = ""
     @State var enterImage = UIImage()
     
@@ -36,7 +35,7 @@ struct ContentView: View {
                     if datum.name != nil
                     {
                         NavigationLink(destination:
-                                        DetailView(picture: "TEST", name: datum.name ?? "", description: datum.desc ?? ""))
+                                        DetailView(picture: (datum.picture ?? Data()), name: datum.name ?? "", description: datum.desc ?? ""))
                         {
                             if datum.name != nil
                             {
@@ -75,7 +74,8 @@ struct ContentView: View {
                     
                     TextField("Name:", text: $enterName)
                     TextField("Description:", text: $enterDescription)
-                    TextField("Picture:", text: $enterPicture)
+                    
+
 
                     Button( action: {
                         isShowPhotoLibrary = true
@@ -89,9 +89,7 @@ struct ContentView: View {
                     Button("Insert", action: {
                         dataController.saveCity(cityName: enterName, cityPicture: (enterImage.pngData() ?? Data()), cityDescription: enterDescription)
                         toInsertView = false
-                        
-                        //enterImage.pngData() ?? Data()
-                        
+                                                
                     })
                     
                     Button("Cancel", role: .cancel, action: {

@@ -9,14 +9,18 @@ import Foundation
 import SwiftUI
 
 struct DetailView: View {
-    var picture:String
+    var picture:Data
     var name:String
 
     var description:String
     
     var body: some View {
         Text(name).font(.system(size: 36))
-   // Text(picture)
+        Image(uiImage: UIImage(data:(picture ?? Data())) ?? UIImage())
+            .resizable()
+            .scaledToFill()
+            .frame(minWidth: 0, maxWidth: .infinity)
+            .edgesIgnoringSafeArea(.all)
     Text(description)
     }
 }
